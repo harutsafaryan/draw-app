@@ -1,5 +1,5 @@
 import { Drawable } from "../interfaces/Drawable";
-import {  Text } from "react-konva";
+import {  Line, Text } from "react-konva";
 
 
 export class Impost implements Drawable {
@@ -26,7 +26,8 @@ export class Impost implements Drawable {
 
     draw() {
         return (
-            <Text text="impost test" x={50} y={60} />
+            <Line x={this._x} y={this._y} />
+            // <Text text="impost test" x={50} y={60} />
         )
     }
 }

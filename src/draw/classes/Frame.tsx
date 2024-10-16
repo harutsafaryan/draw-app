@@ -1,6 +1,6 @@
 
 import { Drawable } from "../interfaces/Drawable";
-import {  Text } from "react-konva";
+import {  Rect, Text } from "react-konva";
 
 export class Frame implements Drawable {
     private _x: number;
@@ -39,7 +39,8 @@ export class Frame implements Drawable {
 
     draw() {
         return (
-            <Text text="frame test" x={500}  y={300}  />
+            <Rect x={this._x} y={this._y} width={this._width} height={this._height} fill='green' />
+            // <Text text="frame test" x={500}  y={300}  />
         )
     }
 }
