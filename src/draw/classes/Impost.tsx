@@ -1,5 +1,5 @@
 import { Drawable } from "../interfaces/Drawable";
-import {  Line, Text } from "react-konva";
+import { Line } from "react-konva";
 
 
 export class Impost implements Drawable {
@@ -25,9 +25,9 @@ export class Impost implements Drawable {
     set direction(value) { this._direction = value }
 
     draw() {
-        return (
-            <Line x={this._x} y={this._y} />
-            // <Text text="impost test" x={50} y={60} />
-        )
+        if (this.direction === 'vertical')
+            return <Line points={[this._x, this._y, this._x, this._y + this._length]} stroke='red' strokeWidth={4} />
+        else
+            return <Line points={[this._x, this._y, this._x + this._length, this._y]} stroke='red' strokeWidth={4} />
     }
 }

@@ -1,4 +1,7 @@
 import { Frame } from "./Frame";
+import { Circle } from "react-konva";
+
+
 
 export class Sash extends Frame {
     private _opening: 'fix' | 'left' | 'right';
@@ -24,5 +27,10 @@ export class Sash extends Frame {
         }
         else
             this._tiltAndTurn = false;
+    }
+
+    draw() {
+        super.draw();
+        return <Circle x={90} y={90} radius={10} stroke='black' strokeWidth={4} />
     }
 }
