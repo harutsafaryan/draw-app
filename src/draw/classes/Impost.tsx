@@ -1,3 +1,4 @@
+import { drawHeight, drawWidth } from "../data";
 import { Drawable } from "../interfaces/Drawable";
 import { Line } from "react-konva";
 
@@ -24,10 +25,17 @@ export class Impost implements Drawable {
     set y(value) { this._y = value }
     set direction(value) { this._direction = value }
 
+    getScale() {
+        let s = this._direction === 'horizontal' ? this._length / drawWidth : this._length / drawHeight;
+        let f = 1 / s;
+        f = f * 100;
+        return Math.floor(f) / 100;
+    }
+
     draw() {
         if (this.direction === 'vertical')
-            return <Line points={[this._x, this._y, this._x, this._y + this._length]} stroke='red' strokeWidth={4} />
+            return <Line points={[this._x, this._y, this._x, this._y + this._length * this.getScale()]} stroke='orange' strokeWidth={4} />
         else
-            return <Line points={[this._x, this._y, this._x + this._length, this._y]} stroke='red' strokeWidth={4} />
+            return <Line points={[this._x, this._y, this._x + this._length * this.getScale(), this._y]} stroke='orange' strokeWidth={4} />
     }
 }

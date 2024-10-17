@@ -39,12 +39,9 @@ export class Rectangle {
     getScale() {
         let s1 = this._width / drawWidth;
         let s2 = this._height / drawHeight;
-        return 1 / Math.max(s1, s2);
-        // if (s1 > 1 || s2 > 1) {
-        //     return 1 / scale; // scale more than one, so we need reduce the drawing
-        // }
-        // else { // scale less than one, so we need enlarge the drawing
-        //     return scale;
-        // }
+        let f =  1 / Math.max(s1, s2);
+        f = f * 100;
+        return Math.floor(f) / 100;
+
     }
 }

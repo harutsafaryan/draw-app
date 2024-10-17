@@ -30,10 +30,9 @@ export class Sash extends Rectangle implements Drawable {
     }
 
     draw() {
-        console.log('scale: ', super.getScale())
         return (
             <>
-                <Rect x={this._x} y={this._y} width={this._width * 0.33} height={this._height * 0.33} stroke='red' strokeWidth={4} />
+                <Rect x={this._x} y={this._y} width={this._width * this.getScale()} height={this._height * this.getScale()} stroke='red' strokeWidth={4} />
                 <Line points={[this._x+20, this._y, this._x, this._y + this._height]} stroke='gray' strokeWidth={2} />
                 <Circle x={90} y={150} radius={10} stroke='black' strokeWidth={4} />
             </>

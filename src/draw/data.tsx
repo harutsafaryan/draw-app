@@ -1,2 +1,2 @@
-export const drawWidth = 1000;
-export const drawHeight = 1000;
+export const drawWidth = 600;
+export const drawHeight = 600;
