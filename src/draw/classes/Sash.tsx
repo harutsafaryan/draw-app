@@ -1,14 +1,15 @@
-import { Frame } from "./Frame";
-import { Circle } from "react-konva";
+import { Drawable } from "../interfaces/Drawable";
+import { Circle, Line, Rect } from "react-konva";
+import { Rectangle } from "./Rectangle";
 
 
 
-export class Sash extends Frame {
+export class Sash extends Rectangle implements Drawable {
     private _opening: 'fix' | 'left' | 'right';
     private _tiltAndTurn: boolean;
 
-    constructor(width: number, height: number, x: number, y: number, opening: 'fix' | 'left' | 'right', tiltAndTurn: boolean) {
-        super(width, height, x, y);
+    constructor(x: number, y: number, width: number, height: number, opening: 'fix' | 'left' | 'right', tiltAndTurn: boolean) {
+        super(x, y, width, height);
         this._opening = opening;
         this._tiltAndTurn = tiltAndTurn
     }
@@ -17,7 +18,6 @@ export class Sash extends Frame {
     get tiltAndTurn() { return this._tiltAndTurn }
 
     set opening(value) { this._opening = value }
-
     set tiltAndTurn(value) {
         if (value === true) {
             if (this._opening !== 'fix')
@@ -30,7 +30,13 @@ export class Sash extends Frame {
     }
 
     draw() {
-        super.draw();
-        return <Circle x={90} y={90} radius={10} stroke='black' strokeWidth={4} />
+        console.log('scale: ', super.getScale())
+        return (
+            <>
+                <Rect x={this._x} y={this._y} width={this._width * 0.33} height={this._height * 0.33} stroke='red' strokeWidth={4} />
+                <Line points={[this._x+20, this._y, this._x, this._y + this._height]} stroke='gray' strokeWidth={2} />
+                <Circle x={90} y={150} radius={10} stroke='black' strokeWidth={4} />
+            </>
+        )
     }
 }
