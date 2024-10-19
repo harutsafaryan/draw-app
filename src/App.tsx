@@ -8,12 +8,14 @@ import { Impost } from './draw/classes/Impost';
 
 function App() {
 
-  const d = [
-    new Frame(0, 0, 200, 250),
-    // new Sash(0, 0, 300, 200, 'fix', true),
-    // new Impost(50, 50, 330, 'vertical'),
-    // new Impost(50, 50, 300, 'horizontal'),
-  ]
+  const frame = new Frame(0, 0, 500, 500);
+  const sash = new Sash(0, 0, 220, 240, 'fix', true, frame.getScale());
+  const impost =  new Impost(15, 20 , 300, 'horizontal', frame.getScale());
+
+  let d = [];
+  d.push(frame);
+  d.push(sash);
+  d.push(impost);
 
   return (
     <Stage width={drawWidth+10} height={drawHeight+10} >

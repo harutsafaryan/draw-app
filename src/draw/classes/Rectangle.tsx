@@ -8,10 +8,10 @@ export class Rectangle {
     protected _height: number;
 
     constructor(x: number, y: number, width: number, height: number) {
-        this._x = x;
-        this._y = y;
-        this._width = width;
-        this._height = height;
+        this._x = Math.trunc(x / 10) * 10;
+        this._y = Math.trunc(y / 10) * 10;
+        this._width = Math.trunc(width / 10) * 10;
+        this._height = Math.trunc(height / 10) * 10;
     }
 
     get height() { return this._height }
@@ -21,27 +21,18 @@ export class Rectangle {
 
     set height(value) {
         if (value > 300 && value < 3000)
-            this._height = value;
+            this._height = Math.trunc(value / 10) * 10;
         else
             throw new Error(`Invalid height value ${value}`)
     }
 
     set width(value) {
         if (value > 300 && value < 3000)
-            this._width = value;
+            this._width = Math.trunc(value / 10) * 10;
         else
             throw new Error(`Invalid width value ${value}`)
     }
 
     getArea() { return this._height * this._width }
     getPerimetr() { return 2 * (this._height + this._width) }
-
-    getScale() {
-        let s1 = this._width / drawWidth;
-        let s2 = this._height / drawHeight;
-        let f =  1 / Math.max(s1, s2);
-        f = f * 100;
-        return Math.floor(f) / 100;
-
-    }
 }
