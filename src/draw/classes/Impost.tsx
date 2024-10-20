@@ -8,7 +8,7 @@ export class Impost implements Drawable {
     private _y: number;
     private _length: number;
     private _direction: 'vertical' | 'horizontal';
-    private _scale : { x: number, y: number }
+    private _scale: { x: number, y: number }
 
     constructor(x: number, y: number, length: number, direction: 'vertical' | 'horizontal', scale: { x: number, y: number }) {
         this._x = Math.trunc(x / 10) * 10;
@@ -44,8 +44,18 @@ export class Impost implements Drawable {
 
     draw() {
         if (this.direction === 'vertical')
-            return <Line points={[this._x, this._y, this._x, this._y + this._length]} stroke='orange' strokeWidth={4} scale={this._scale} strokeScaleEnabled={false} />
+            return <Line
+                points={[this._x, this._y, this._x, this._y + this._length]}
+                stroke='orange'
+                strokeWidth={4}
+                scale={this._scale}
+                strokeScaleEnabled={false} />
         else
-            return <Line points={[this._x, this._y, this._x + this._length, this._y]} stroke='orange' strokeWidth={4} scale={this._scale} strokeScaleEnabled={false} />
+            return <Line
+                points={[this._x, this._y, this._x + this._length, this._y]}
+                stroke='orange'
+                strokeWidth={4}
+                scale={this._scale}
+                strokeScaleEnabled={false} />
     }
 }

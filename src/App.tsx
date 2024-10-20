@@ -8,9 +8,10 @@ import { Impost } from './draw/classes/Impost';
 
 function App() {
 
-  const frame = new Frame(0, 0, 500, 500);
-  const sash = new Sash(0, 0, 220, 240, 'fix', true, frame.getScale());
-  const impost =  new Impost(15, 20 , 300, 'horizontal', frame.getScale());
+  const frame = new Frame(0, 0, 2000, 2000);
+  const scale = frame.getScale();
+  const sash = new Sash(0, 300, 2000, 1700, 'right', true, scale);
+  const impost =  new Impost(1000, 0 , 2000, 'vertical', scale);
 
   let d = [];
   d.push(frame);

@@ -3,6 +3,7 @@ import { Drawable } from "../interfaces/Drawable";
 import { Rect } from "react-konva";
 import { Rectangle } from "./Rectangle";
 import { drawHeight, drawWidth } from "../data";
+import { round } from "../helper";
 
 export class Frame extends Rectangle implements Drawable {
 
@@ -10,8 +11,7 @@ export class Frame extends Rectangle implements Drawable {
         let s1 = this._width / drawWidth;
         let s2 = this._height / drawHeight;
         let f = 1 / Math.max(s1, s2);
-        f = f * 100;
-        const scale = Math.floor(f) / 100
+        const scale = round(f)
         return { x: scale, y: scale };
     }
 

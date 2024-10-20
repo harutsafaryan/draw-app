@@ -1,5 +1,5 @@
 import { Drawable } from "../interfaces/Drawable";
-import { Circle, Line, Rect } from "react-konva";
+import { Circle, Line, Rect, Text } from "react-konva";
 import { Rectangle } from "./Rectangle";
 
 
@@ -32,11 +32,28 @@ export class Sash extends Rectangle implements Drawable {
     }
 
     draw() {
+        console.log('scale: ', this._scale)
         return (
             <>
-                <Rect x={this._x} y={this._y} width={this._width} height={this._height} stroke='red' strokeWidth={4} scale={this._scale} strokeScaleEnabled={false} />
-                <Line points={[this._x + 20, this._y, this._x, this._y + this._height]} stroke='gray' strokeWidth={2} />
-                <Circle x={90} y={150} radius={10} stroke='black' strokeWidth={4} />
+                <Rect
+                    x={this._x * this._scale.x}
+                    y={this._y * this._scale.y}
+                    width={this._width}
+                    height={this._height}
+                    scale={this._scale}
+                    strokeScaleEnabled={false}
+                    strokeWidth={4}
+                    stroke='red'
+                />
+                {
+                    this._opening === 'left'
+                        ? <Line points={[this._x, this._y, this.x + this._width, this._y + this._height / 2, this._x, this._y + this._height]} scale={this._scale} stroke='gray' dash={[30, 30]} />
+                        : <Line points={[this._x + this.width, this._y, this.x, this._y + this._height / 2, this._x + this._width, this._y + this._height]} scale={this._scale} stroke='gray' dash={[30, 30]} />
+                }
+                {
+                    this._tiltAndTurn &&
+                    <Line points={[this._x, this._y + this._height, this.x + this.width/2, this._y, this._x + this._width, this._y + this._height]} scale={this._scale} stroke='gray' dash={[30, 30]} />
+                }
             </>
         )
     }
